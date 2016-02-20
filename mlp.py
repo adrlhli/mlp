@@ -2,7 +2,6 @@ import numpy as np
 
 class MultilayerPerceptron:
     def __init__(self, size, init=0.1):
-        self.size = size
         self.w = []
         self.b = []
         for m, n in zip(size[:-1], size[1:]):
