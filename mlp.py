@@ -1,11 +1,11 @@
 import numpy as np
 
 class MultilayerPerceptron:
-    def __init__(self, size, init=0.1):
+    def __init__(self, size, scale=0.1):
         self.w = []
         self.b = []
         for m, n in zip(size[:-1], size[1:]):
-            self.w.append(np.random.normal(scale=init, size=(m, n)))
+            self.w.append(np.random.randn(m, n) * scale)
             self.b.append(np.zeros(shape=n))
 
     def forward(self, x):
