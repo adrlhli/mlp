@@ -28,8 +28,9 @@ class MultilayerPerceptron:
         dh = -(y - h[-1])
         np.copyto(h[-1], 1)
         for w, b, h_i, h_o in zip(self.w[::-1], self.b[::-1], h[-2::-1], h[::-1]):
-            dw = np.transpose(np.dot(np.transpose(dh * np.sign(h_o)), h_i)) / batch_size
-            db = np.mean(dh * np.sign(h_o), axis=0)
-            dh = np.mean(np.dot(dh * np.sign(h_o), np.transpose(w)), axis=0)
+            dh = dh * np.sign(h_o)
+            dw = np.transpose(np.dot(np.transpose(dh), h_i)) / batch_size
+            db = np.mean(dh, axis=0)
+            dh = np.mean(np.dot(dh, np.transpose(w)), axis=0)
             w -= lr * dw
             b -= lr * db
