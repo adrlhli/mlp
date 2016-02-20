@@ -6,7 +6,7 @@ class MultilayerPerceptron:
         self.b = []
         for m, n in zip(size[:-1], size[1:]):
             self.w.append(np.random.randn(m, n) * scale)
-            self.b.append(np.zeros(shape=n))
+            self.b.append(np.zeros(n))
 
     def forward(self, x):
         h = np.array(x, ndmin=2)
